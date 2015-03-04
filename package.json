@@ -1,6 +1,6 @@
 {
   "name": "declaire-todos",
-  "description": "A simple todos application using declaire.js"
+  "description": "A simple todos application using declaire.js",
   "version": "0.1.0",
   "author": {
     "name": "Björn Breitgoff",
