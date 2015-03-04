@@ -1,0 +1,3 @@
+{
+  "ignore": ["*.test.js", "fixtures/*", "public/*", "src/app.js"]
+}

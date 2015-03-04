@@ -1,0 +1,19 @@
+{
+  "name": "declaire-todos",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/js/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "underscore": "~1.7.0",
+    "backbone": "~1.1.2",
+    "modernizr": "~2.8.3",
+    "fontawesome": "~4.3.0"
+  }
+}

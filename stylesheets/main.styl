@@ -1,0 +1,28 @@
+@require 'nib'
+global-reset()
+
+$baseFont = 'Neue Helvetica', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif
+$black = #333
+$main = #1b5416
+
+sticky()
+  position: -webkit-sticky
+  position: -moz-sticky
+  position: -ms-sticky
+  position: -o-sticky
+  position: sticky
+  top: 0
+
+*
+  box-sizing: border-box
+
+html
+  width: 100%
+  text-size-adjust: 100%
+
+body
+  width: 100%
+  margin: 0
+  font-family: $baseFont
+  color: $black
+  position: relative

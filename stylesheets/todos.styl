@@ -1,0 +1,34 @@
+@require 'main.styl'
+
+.todos-view
+  header
+    margin-top: 2rem
+    padding: 1rem 2rem
+    color: $black
+    h1
+      font-size: 2em
+  main
+    background: #f6f6f6
+    padding: 2rem
+    padding-bottom: 0
+  input[type="text"]
+    padding: 0.5rem
+    font-size: 1rem
+    width: 100%
+  ul
+    margin: 2rem -2rem
+    margin-bottom: 0
+  li
+    padding: 1rem 2rem
+    &:nth-child(odd)
+      background: white
+    input[type="checkbox"]
+      margin: 0
+      margin-right: 1rem
+    h2
+      display: inline-block  
+      color: $black
+      font-size: 1.4rem
+  footer
+    text-align: right
+    padding: 1rem 2rem

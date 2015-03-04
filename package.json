@@ -1,0 +1,21 @@
+{
+  "name": "declaire-todos",
+  "description": "A simple todos application using declaire.js"
+  "version": "0.1.0",
+  "author": {
+    "name": "Björn Breitgoff",
+    "email": "syntheticore@gmail.com"
+  },
+  "dependencies": {
+    "declaire": "*",
+    "bower": "*",
+    "underscore": "*"
+  },
+  "engines": {
+    "node": "0.12.x"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "postinstall": "./node_modules/bower/bin/bower install"
+  }
+}
