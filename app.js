@@ -1,6 +1,6 @@
 var Declaire = require('declaire');
 
-var Todo = Declaire.Model('todo', {
+var Todo = Declaire.Model('todos', {
   title: 'Untitled Todo',
   done: false,
 

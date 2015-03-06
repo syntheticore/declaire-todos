@@ -11,11 +11,20 @@
     "bower": "*",
     "underscore": "*"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/syntheticore/declaire-todos.git"
+  },
   "engines": {
     "node": "0.12.x"
   },
   "scripts": {
     "start": "node app.js",
     "postinstall": "./node_modules/bower/bin/bower install"
-  }
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/syntheticore/declaire-todos/issues"
+  },
+  "homepage": "https://github.com/syntheticore/declaire-todos"
 }
