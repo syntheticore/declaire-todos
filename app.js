@@ -1,27 +1,33 @@
-var Declaire = require('declaire');
+var declaire = require('declaire');
 
-var Todo = Declaire.Model('todos', {
+
+var Todo = declaire.Model('todos', {
   title: 'Untitled Todo',
   done: false,
 
   check: function() {
     // this.save({done: true});
     this.set('done', true);
+    this.save();
   }
 });
 
-Declaire.ViewModel('TodosView', {
+
+declaire.ViewModel('TodosView', {
   title: 'Todos',
-  todos: [Todo.create(), Todo.create()],
+  todos: declaire.Collection(Todo),
 
   newTodo: function(text) {
     var todo = Todo.create();
-    var entry = this.$el.find('#entry');
+    var entry = $('#entry');
     text = entry.val();
-    todo.set('title', text.toUpperCase());
+    console.log(text);
+    todo.set('title', text.slice(0, 1).toUpperCase() + text.slice(1));
+    todo.save();
     var todos = this.get('todos');
-    todos.push(todo);
-    this.set('todos', todos);
+    console.log(todos);
+    todos.add(todo);
+    // this.set('todos', todos);
     entry.val('');
     // _.delay(function() {
     //   todo.check();
@@ -30,6 +36,7 @@ Declaire.ViewModel('TodosView', {
   }
 });
 
-Declaire.start({
+
+declaire.start({
   mongoDevUrl: 'mongodb://127.0.0.1:27017/todos'
 });

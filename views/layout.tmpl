@@ -13,22 +13,26 @@ head
   script(src="/js/external/modernizr/modernizr.js")
 
 body
-  {{if-equal _page '/pages/todos'}}
+  {{if-equal _page '/pages/index'}}
     {{view TodosView}}
       .todos-view
+        //- header>h1 {title}
         header
           h1 {title}
         main
-          input#entry(type="text" placeholder="What would you like to do?" {{action change newTodo}})
+          input#entry(type="text" placeholder="What's next?" autofocus {{action change newTodo}})
           ul
             {{for todo in todos}}
               li
                 input(type="checkbox" checked="{todo.done}")
                 h2 {todo.title}
         footer
-          span {todos.length} Items left to do
+          {{if-equal todos.length 0}}
+            span Nothing to do
+          {{if-greater todos.length 0}}
+            span {todos.length} Items left to do
 
   script(src="/js/external/jquery/dist/jquery.min.js")
   script(src="/js/external/underscore/underscore-min.js")
   script(src="/js/external/backbone/backbone.js")
-  //- script(src="/bundle.js")
+  script(src="/bundle.js")
