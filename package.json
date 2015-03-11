@@ -7,7 +7,7 @@
     "email": "syntheticore@gmail.com"
   },
   "dependencies": {
-    "declaire": "*",
+    "declaire": "^0.1.12",
     "bower": "*",
     "underscore": "*"
   },
