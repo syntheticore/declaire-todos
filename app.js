@@ -26,13 +26,14 @@ require('declaire')({
 
   declaire.ViewModel('TodosView', {
     title: 'Todos',
-    todos: declaire.Collection(),
+    // todos: declaire.Collection(),
+    todos: declaire.Query(Todo),
 
     newTodo: function(text) {
       var entry = $('#entry');
       text = entry.val();
       var todo = Todo.create({title: text.slice(0, 1).toUpperCase() + text.slice(1)}).save();
-      this.get('todos').add(todo);
+      // this.get('todos').add(todo);
       entry.val('');
       // declaire.defer(function() {
       //   todo.check();
