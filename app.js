@@ -1,42 +1,45 @@
-var declaire = require('declaire');
-
-
-var Todo = declaire.Model('todos', {
-  title: 'Untitled Todo',
-  done: false,
-
-  check: function() {
-    // this.save({done: true});
-    this.set('done', true);
-    this.save();
+require('declaire')({
+  mongoDevUrl: 'mongodb://127.0.0.1:27017/todos',
+  beforeConnect: function(app, db, cb) {
+    console.log("Before listen");
+    cb();
   }
-});
+}, function(declaire, start) {
 
+  var Todo = declaire.Model('todos', {
+    title: 'Untitled Todo',
+    done: false,
 
-declaire.ViewModel('TodosView', {
-  title: 'Todos',
-  todos: declaire.Collection(Todo),
+    check: function() {
+      // this.save({done: true});
+      this.set('done', true);
+      this.save();
+    }
+  });
 
-  newTodo: function(text) {
-    var todo = Todo.create();
-    var entry = $('#entry');
-    text = entry.val();
-    console.log(text);
-    todo.set('title', text.slice(0, 1).toUpperCase() + text.slice(1));
-    todo.save();
-    var todos = this.get('todos');
-    console.log(todos);
-    todos.add(todo);
-    // this.set('todos', todos);
-    entry.val('');
-    // _.delay(function() {
-    //   todo.check();
-    //   todo.set('title', 'boo');
-    // }, 1000);
-  }
-});
+  // Todo.load('5508964116424abd1a557cf0', function(todo) {
+  //   console.log(todo);
+  //   // todo.delete(function() {
+  //   //   console.log('deleted');
+  //   // });
+  // });
 
+  declaire.ViewModel('TodosView', {
+    title: 'Todos',
+    todos: declaire.Collection(),
 
-declaire.start({
-  mongoDevUrl: 'mongodb://127.0.0.1:27017/todos'
+    newTodo: function(text) {
+      var entry = $('#entry');
+      text = entry.val();
+      var todo = Todo.create({title: text.slice(0, 1).toUpperCase() + text.slice(1)}).save();
+      this.get('todos').add(todo);
+      entry.val('');
+      // declaire.defer(function() {
+      //   todo.check();
+      //   todo.set('title', 'boo');
+      // }, 1000);
+    }
+  });
+
+  start();
 });

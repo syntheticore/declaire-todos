@@ -7,9 +7,8 @@
     "email": "syntheticore@gmail.com"
   },
   "dependencies": {
-    "declaire": "^0.1.12",
     "bower": "*",
-    "underscore": "*"
+    "declaire": "^0.1.14"
   },
   "repository": {
     "type": "git",
