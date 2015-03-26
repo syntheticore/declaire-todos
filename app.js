@@ -27,7 +27,7 @@ require('declaire')({
   declaire.ViewModel('TodosView', {
     title: 'Todos',
     // todos: declaire.Collection(),
-    todos: declaire.Query(Todo),
+    todos: Todo.all(),
 
     newTodo: function(text) {
       var entry = $('#entry');
@@ -44,3 +44,4 @@ require('declaire')({
 
   start();
 });
+
