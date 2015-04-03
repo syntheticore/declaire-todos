@@ -1,3 +1,6 @@
+var RSVP = require('rsvp');
+
+
 require('declaire')({
   mongoDevUrl: 'mongodb://127.0.0.1:27017/todos',
   beforeConnect: function(app, db, cb) {
@@ -40,8 +43,14 @@ require('declaire')({
       //   todo.set('title', 'boo');
       // }, 1000);
     }
-  }, function(inst) {
-    inst.set('title', 'Foo');
+  }, function() {
+    var self = this;
+    return new RSVP.Promise(function(resolve, reject) {
+      setTimeout(function() {
+        self.set('title', 'My Todos');
+        resolve();
+      }, 0);
+    });
   });
 
   start();

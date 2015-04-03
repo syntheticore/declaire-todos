@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "bower": "*",
-    "declaire": "^0.1.21"
+    "declaire": "^0.1.22",
+    "rsvp": "^3.0.18"
   },
   "repository": {
     "type": "git",

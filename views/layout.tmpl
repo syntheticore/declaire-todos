@@ -13,19 +13,24 @@ head
   script(src="/js/bower/modernizr/modernizr.js")
 
 body
-  {{if-equal _page '/pages/index'}}
+  //- h1 body
+  {{if-equal _page 'index'}}
+    //- h1 if
     {{view TodosView}}
       .todos-view
         //- header>h1 {title}
         header
           h1 {title}
         main
-          input#entry(type="text" placeholder="What's next?" autofocus {{action change newTodo}})
+          form({{action submit newTodo}})
+            input#entry(type="text" placeholder="What's next?" autofocus)
+            button Create
           ul
             {{for todo in todos}}
               li
-                input(type="checkbox" checked="{todo.done}")
-                h2 {todo.title}
+                label
+                  input(type="checkbox" checked="{todo.done}")
+                  h2 {todo.title}
         footer
           //- span {todos.length} Items left to do
           {{if-equal todos.length 0}}
@@ -34,6 +39,4 @@ body
             span {todos.length} Items left to do
 
   script(src="/js/bower/jquery/dist/jquery.min.js")
-  script(src="/js/bower/underscore/underscore-min.js")
-  script(src="/js/bower/backbone/backbone.js")
   script(src="/bundle.js" async)
