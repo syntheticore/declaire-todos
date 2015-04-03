@@ -27,6 +27,7 @@ body
                 input(type="checkbox" checked="{todo.done}")
                 h2 {todo.title}
         footer
+          //- span {todos.length} Items left to do
           {{if-equal todos.length 0}}
             span Nothing to do
           {{if-greater todos.length 0}}

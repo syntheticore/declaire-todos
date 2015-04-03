@@ -40,6 +40,8 @@ require('declaire')({
       //   todo.set('title', 'boo');
       // }, 1000);
     }
+  }, function(inst) {
+    inst.set('title', 'Foo');
   });
 
   start();
