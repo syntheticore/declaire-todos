@@ -21,6 +21,8 @@ body
         //- header>h1 {title}
         header
           h1 {title}
+          {{view Clock}}
+            time {displayTime}
         main
           form({{action submit newTodo}})
             input#entry(type="text" placeholder="What's next?" autofocus)

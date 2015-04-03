@@ -14,34 +14,19 @@ require('declaire')({
     done: false,
 
     check: function() {
-      // this.save({done: true});
-      this.set('done', true);
-      this.save();
+      this.save({done: true});
     }
   });
 
-  // Todo.load('5508964116424abd1a557cf0', function(todo) {
-  //   console.log(todo);
-  //   // todo.delete(function() {
-  //   //   console.log('deleted');
-  //   // });
-  // });
-
   declaire.ViewModel('TodosView', {
     title: 'Todos',
-    // todos: declaire.Collection(),
     todos: Todo.all(),
 
     newTodo: function(text) {
       var entry = $('#entry');
       text = entry.val();
       var todo = Todo.create({title: text.slice(0, 1).toUpperCase() + text.slice(1)}).save();
-      // this.get('todos').add(todo);
       entry.val('');
-      // declaire.defer(function() {
-      //   todo.check();
-      //   todo.set('title', 'boo');
-      // }, 1000);
     }
   }, function() {
     var self = this;
@@ -50,6 +35,24 @@ require('declaire')({
         self.set('title', 'My Todos');
         resolve();
       }, 0);
+    });
+  });
+
+  declaire.ViewModel('Clock', {
+    time: new Date(),
+
+    displayTime: function() {
+      return this.get('time').toGMTString();
+    }
+  }, function() {
+    var self = this;
+    // Update model state every second once the view exists
+    var iv = setInterval(function() {
+      self.set('time', new Date());
+    }, 1000);
+    // Clear handler when the view gets removed from the DOM
+    self.on('remove', function() {
+      clearInterval(iv);
     });
   });
 
