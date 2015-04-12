@@ -1,7 +1,7 @@
 {
   "name": "declaire-todos",
-  "description": "A simple todos application using declaire.js",
   "version": "0.1.0",
+  "description": "A simple todos application using declaire.js",
   "author": {
     "name": "Björn Breitgoff",
     "email": "syntheticore@gmail.com"
@@ -11,18 +11,24 @@
     "jquery": "^2.1.3",
     "rsvp": "^3.0.18"
   },
+  "devDependencies": {
+    "mocha": "^2.2.1",
+    "chai": "^2.2.0",
+    "istanbul": "^0.3.13",
+    "coveralls": "^2.11.2"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "make test"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/syntheticore/declaire-todos.git"
   },
-  "engines": {
-    "node": "0.12.x"
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/syntheticore/declaire/blob/master/LICENSE"
   },
-  "scripts": {
-    "start": "node app.js",
-    "postinstall": "./node_modules/bower/bin/bower install"
-  },
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/syntheticore/declaire-todos/issues"
   },
