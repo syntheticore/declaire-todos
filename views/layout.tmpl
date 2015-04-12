@@ -8,9 +8,6 @@ head
 
   link(rel="shortcut icon" href="/favicon.png")
   link(href='/stylesheets/todos.css' rel='stylesheet')
-  link(href="/js/bower/fontawesome/css/font-awesome.min.css" rel="stylesheet")
-
-  script(src="/js/bower/modernizr/modernizr.js")
 
 body
   //- h1 body
@@ -25,7 +22,7 @@ body
             time {displayTime}
         main
           form({{action submit newTodo}})
-            input#entry(type="text" placeholder="What's next?" autofocus)
+            input.entry(type="text" placeholder="What's next?" autofocus)
             button Create
           ul
             {{for todo in todos}}
@@ -40,5 +37,4 @@ body
           {{if-greater todos.length 0}}
             span {todos.length} Items left to do
 
-  script(src="/js/bower/jquery/dist/jquery.min.js")
   script(src="/bundle.js" async)

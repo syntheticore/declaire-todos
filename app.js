@@ -1,4 +1,4 @@
-var RSVP = require('rsvp');
+var $ = require('jquery');
 
 
 require('declaire')({
@@ -23,19 +23,11 @@ require('declaire')({
     todos: Todo.all(),
 
     newTodo: function(text) {
-      var entry = $('#entry');
+      var entry = $('.entry');
       text = entry.val();
       var todo = Todo.create({title: text.slice(0, 1).toUpperCase() + text.slice(1)}).save();
       entry.val('');
     }
-  }, function() {
-    var self = this;
-    return new RSVP.Promise(function(resolve, reject) {
-      setTimeout(function() {
-        self.set('title', 'My Todos');
-        resolve();
-      }, 0);
-    });
   });
 
   declaire.ViewModel('Clock', {
