@@ -3,7 +3,8 @@ var declaire = require('declaire');
 
 var app = declaire.Application({
   baseUrl: '/pages',
-  mongoDevUrl: 'mongodb://127.0.0.1:27017/todos'
+  mongoDevUrl: 'mongodb://127.0.0.1:27017/todos',
+  npmPublic: ['font-awesome']
 });
 
 var Todo = app.use(require('./src/models/todo.js'));
@@ -19,11 +20,10 @@ app.ViewModel('TodosView', {
     var todo = Todo.create({title: text.slice(0, 1).toUpperCase() + text.slice(1)}).save();
     entry.val('');
   }
+}, function() {
+  this.set('unfinishedTodos', this.get('todos').filter({done: false}).all());
 });
 
 app.init(function(start, express, db) {
-  console.log("Ready for action");
-  start(function() {
-    console.log("Listening");
-  });
+  start();
 });
