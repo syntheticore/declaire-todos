@@ -14,7 +14,7 @@ app.ViewModel('TodosView', {
   title: 'Todos',
   todos: Todo.all(),
 
-  newTodo: function(text) {
+  newTodo: function(e, input) {
     var entry = $('.entry');
     text = entry.val();
     var todo = Todo.create({title: text.slice(0, 1).toUpperCase() + text.slice(1)}).save();

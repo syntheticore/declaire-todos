@@ -26,11 +26,12 @@ body
             input.entry(type="text" placeholder="What's next?" autofocus {{as input}})
             button Create
           ul
-            {{for todo in todos}}
+            {{for todos}}
               li
                 label
-                  input(type="checkbox" checked="{todo.done!!}")
-                  h2 {todo.title}
+                  input(type="checkbox" checked="{done!!}")
+                  h2 {title}
+                button.mini({{action click delete}}) Delete
         footer
           h1 {unfinishedTodos.length}
           {{if-equal todos.length 0}}
