@@ -9,13 +9,9 @@ head
   link(rel="shortcut icon" href="/favicon.png")
   link(href='/stylesheets/todos.css' rel='stylesheet')
   link(href="/font-awesome/css/font-awesome.min.css" rel="stylesheet")
-  
-  script(src="/bundle.js" async="async")
 
 body
-  //- h1 body
-  {{if-equal _page 'index'}}
-    //- h1 if
+  {{route /pages/index}}
     {{view TodosView}}
       .todos-view
         header
@@ -34,7 +30,9 @@ body
                 button.mini({{action click delete}}) Delete
         footer
           h1 {unfinishedTodos.length}
-          {{if-equal todos.length 0}}
+          {{if todos.length == 0}}
             span Nothing to do
-          {{if-greater todos.length 0}}
+          {{if todos.length > 0}}
             span {todos.length} Items left to do
+  {{=>}}
+    h1 Other page
