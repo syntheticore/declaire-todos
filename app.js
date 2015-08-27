@@ -1,29 +1,62 @@
-var $ = require('jquery');
 var declaire = require('declaire');
+var _ = declaire.Utils;
+
 
 var app = declaire.Application({
-  baseUrl: '/pages',
   mongoDevUrl: 'mongodb://127.0.0.1:27017/todos',
-  npmPublic: ['font-awesome']
+  npmPublic: ['todomvc-app-css', 'todomvc-common']
 });
 
 var Todo = app.use(require('./src/models/todo.js'));
-app.use(require('./src/views/Clock.js'));
 
 app.ViewModel('TodosView', {
-  title: 'Todos',
-  todos: Todo.all(),
+  newTodo: function(e) {
+    var text = e.target.value;
+    Todo.create({title: text.slice(0, 1).toUpperCase() + text.slice(1)}).save();
+    e.target.value = '';
+  },
 
-  newTodo: function(e, input) {
-    var entry = $('.entry');
-    text = entry.val();
-    var todo = Todo.create({title: text.slice(0, 1).toUpperCase() + text.slice(1)}).save();
-    entry.val('');
+  markAllComplete: function(e) {
+    // Todo.all().resolve(function(todos) {
+    //   _.each(todos, function(todo) {
+    //     todo.set('done', e.target.checked);
+    //   });
+    // });
+    Todo.all().set('done', e.target.checked);
+  },
+
+  clearCompleted: function() {
+    // this.completedTodos().resolve(function(todos) {
+    //   _.invoke(todos, 'delete');
+    // });
+    this.completedTodos().invoke('delete');
+  },
+
+  activeTodos: function() {
+    return Todo.all().filter({done: false});
+  },
+
+  completedTodos: function() {
+    return Todo.all().filter({done: true});
+  },
+
+  todos: function() {
+    var page = _.last(app.mainModel.get('_page').split('/'));
+    // if(page == 'all') {
+    //   return Todo.all();
+    // } else if(page == 'active') {
+    //   return this.activeTodos();
+    // } else if(page == 'completed') {
+    //   return this.completedTodos();
+    // }
+    return _.choose(page, {
+      all: Todo.all(),
+      active: this.activeTodos(),
+      completed: this.completedTodos()
+    });
   }
-}, function() {
-  this.set('unfinishedTodos', this.get('todos').filter({done: false}).all());
 });
 
-app.init(function(start, express, db) {
+app.init(function(start) {
   start();
 });
