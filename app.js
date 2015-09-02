@@ -1,7 +1,8 @@
-var declaire = require('declaire');
-var _ = declaire.Utils;
+var Declaire = require('declaire');
+var _ = Declaire.Utils;
 
-var app = declaire.Application({
+
+var app = Declaire.Application({
   mongoDevUrl: 'mongodb://127.0.0.1:27017/todos',
   npmPublic: ['todomvc-app-css', 'todomvc-common']
 });
@@ -14,12 +15,12 @@ app.ViewModel('TodosView', {
   completedTodos: Todo.filter({done: true}),
 
   newTodo: function(e) {
-    Todo.create({title: _.capitalize(e.target.value)}).save();
+    Todo.create({title: _.capitalize(e.target.value.trim())}).save();
     e.target.value = '';
   },
 
   markAllComplete: function(e) {
-    Todo.all().set('done', e.target.checked).invoke('save');
+    this.get('allTodos').invoke('set', 'done', e.target.checked).invoke('save');
   },
 
   clearCompleted: function() {
@@ -28,10 +29,14 @@ app.ViewModel('TodosView', {
 
   todos: function() {
     var page = _.last(app.mainModel.get('_page').split('/'));
-    return ({
+    return {
       active: this.get('activeTodos'),
       completed: this.get('completedTodos')
-    }[page]) || this.get('allTodos');
+    }[page] || this.get('allTodos');
+  },
+
+  pluralized: function(word, n) {
+    return word + (n == 1 ? '' : 's');
   }
 });
 

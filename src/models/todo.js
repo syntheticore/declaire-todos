@@ -5,11 +5,11 @@ module.exports = declaire.Model('todos', {
   done: false,
 
   rename: function() {
-    this.set('renaming', true, {temporary: true});
+    this.set('renaming', true, {local: true});
   }
 }, function() {
   var self = this;
-  self.on('save', function() {
-    self.set('renaming', false, {temporary: true});
+  self.on('save revert', function() {
+    self.set('renaming', false, {local: true});
   });
 });
