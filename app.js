@@ -10,32 +10,43 @@ var app = Declaire.Application({
 var Todo = app.use(require('./src/models/todo.js'));
 
 app.ViewModel('TodosView', {
+  // Queries
   allTodos: Todo.all(),
   activeTodos: Todo.filter({done: false}),
   completedTodos: Todo.filter({done: true}),
 
+  // Actions
   newTodo: function(e) {
     Todo.create({title: _.capitalize(e.target.value.trim())}).save();
     e.target.value = '';
   },
 
   markAllComplete: function(e) {
-    this.get('allTodos').invoke('set', 'done', e.target.checked).invoke('save');
+    this.get('allTodos').invoke('save', {done: e.target.checked});
   },
 
   clearCompleted: function() {
     this.get('completedTodos').invoke('delete');
   },
 
+  // Computed properties
+  everythingDone: function() {
+    return this.get('activeTodos').length().then(function(length) {
+      return length == 0;
+    });
+  },
+
   todos: function() {
     var page = _.last(app.mainModel.get('_page').split('/'));
+    console.log(page);
     return {
       active: this.get('activeTodos'),
       completed: this.get('completedTodos')
     }[page] || this.get('allTodos');
   },
 
-  pluralized: function(word, n) {
+  // Helpers
+  pluralize: function(word, n) {
     return word + (n == 1 ? '' : 's');
   }
 });

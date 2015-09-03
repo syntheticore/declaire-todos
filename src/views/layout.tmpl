@@ -15,10 +15,10 @@ body
         h1 todos
         input.new-todo(placeholder="What needs to be done?" autofocus {{action enter newTodo}})
       
-      {{if todos.length}}
+      {{if allTodos.length}}
         
         section.main
-          input.toggle-all(type="checkbox" {{action change markAllComplete}})
+          input.toggle-all(type="checkbox" checked="{everythingDone}" {{action change markAllComplete}})
           label(for="toggle-all") Mark all as complete
           ul.todo-list
             {{for todos}}
@@ -34,7 +34,7 @@ body
         footer.footer
           span.todo-count
             strong {activeTodos.length} 
-            | {pluralized('item', activeTodos.length)} left
+            //- | {pluralize('item', activeTodos.length)} left
           ul.filters
             li > a(href="/pages/all"       class="{selected: _page == '/pages/all'}"      ) All
             li > a(href="/pages/active"    class="{selected: _page == '/pages/active'}"   ) Active
