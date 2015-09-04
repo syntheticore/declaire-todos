@@ -34,6 +34,7 @@ body
         footer.footer
           span.todo-count
             strong {activeTodos.length} 
+            | items left
             //- | {pluralize('item', activeTodos.length)} left
           ul.filters
             li > a(href="/pages/all"       class="{selected: _page == '/pages/all'}"      ) All
@@ -49,4 +50,4 @@ body
       p Part of <a href="http://todomvc.com">TodoMVC</a>
   
 
-  script(src="/todomvc-common/base.js")
+  //- script(src="/todomvc-common/base.js")
