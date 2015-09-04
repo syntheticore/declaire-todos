@@ -22,7 +22,7 @@ body
           label(for="toggle-all") Mark all as complete
           ul.todo-list
             {{for todos}}
-              li(class="{completed: done}")
+              li(class="{completed: done, editing: renaming}")
                 {{if renaming}}
                   input.edit(value="{:title!}" autofocus {{action change save}} {{action escape revert}})
                 {{=>}}
@@ -46,7 +46,7 @@ body
     footer.info
       p Double-click to edit a todo
       p Written by <a href="https://github.com/syntheticore">Björn Breitgoff</a>
-      p Part of <a href="https://declaire.herokuapp.com/pages/index">Declaire.js</a>
+      p Part of <a href="http://todomvc.com">TodoMVC</a>
   
 
   script(src="/todomvc-common/base.js")

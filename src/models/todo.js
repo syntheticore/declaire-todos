@@ -11,7 +11,6 @@ module.exports = declaire.Model('todos', {
   }
 }, function() {
   // Constructor
-  console.log("Constructor called");
   this.on('save revert', function() {
     this.set('renaming', false, {local: true});
   });
