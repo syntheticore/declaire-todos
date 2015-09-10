@@ -1,21 +1,21 @@
 {
   "name": "declaire-todos",
-  "version": "0.1.0",
+  "version": "0.2.4",
   "description": "A simple todos application using Declaire.js",
   "author": {
     "name": "Björn Breitgoff",
     "email": "syntheticore@gmail.com"
   },
   "dependencies": {
-    "declaire": "^0.2.3",
+    "declaire": "^0.2.4",
     "todomvc-app-css": "*",
     "todomvc-common": "*"
   },
   "devDependencies": {
-    "mocha": "^2.2.1",
-    "chai": "^2.2.0",
-    "istanbul": "^0.3.13",
-    "coveralls": "^2.11.2"
+    "mocha": "*",
+    "chai": "*",
+    "istanbul": "*",
+    "coveralls": "*"
   },
   "scripts": {
     "start": "node app.js",
