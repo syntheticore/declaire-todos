@@ -13,23 +13,23 @@ body
     section.todoapp
       header.header
         h1 todos
-        input.new-todo(placeholder="What needs to be done?" autofocus {{action enter newTodo}})
+        input.new-todo(placeholder="What needs to be done?" autofocus {{on enter newTodo}})
       
       {{if allTodos.length}}
         
         section.main
-          input.toggle-all(type="checkbox" checked="{everythingDone}" {{action change markAllComplete}})
+          input.toggle-all(type="checkbox" checked="{everythingDone}" {{on change markAllComplete}})
           label(for="toggle-all") Mark all as complete
           ul.todo-list
             {{for todos}}
               li(class="{completed: done, editing: renaming}")
                 {{if renaming}}
-                  input.edit(value="{:title!}" autofocus {{action change save}} {{action escape revert}})
+                  input.edit(value="{:title!}" autofocus {{on change save}} {{on escape revert}})
                 {{=>}}
-                  .view({{action doubleClick rename}})
+                  .view({{on doubleClick rename}})
                     input.toggle(type="checkbox" checked="{done!!}")
                     label {title}
-                    button.destroy({{action click delete}})
+                    button.destroy({{on click delete}})
         
         footer.footer
           span.todo-count
@@ -42,7 +42,7 @@ body
             li > a(href="/pages/completed" class="{selected: _page == '/pages/completed'}") Completed
           
           {{if completedTodos.length}}
-            button.clear-completed({{action click clearCompleted}}) Clear completed
+            button.clear-completed({{on click clearCompleted}}) Clear completed
     
     footer.info
       p Double-click to edit a todo
