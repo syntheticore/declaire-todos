@@ -34,7 +34,7 @@ body
         footer.footer
           span.todo-count
             strong {activeTodos.length} 
-            | items left
+            span {pluralize('item', activeTodos.length)} left
             //- | {pluralize('item', activeTodos.length)} left
           ul.filters
             li > a(href="/pages/all"       class="{selected: _page == '/pages/all'}"      ) All

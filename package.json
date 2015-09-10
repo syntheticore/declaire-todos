@@ -19,7 +19,8 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": "make test"
+    "test": "make test",
+    "postinstall": "npm ddp"
   },
   "repository": {
     "type": "git",
