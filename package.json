@@ -7,7 +7,7 @@
     "email": "syntheticore@gmail.com"
   },
   "dependencies": {
-    "declaire": "^0.2.2",
+    "declaire": "^0.2.3",
     "todomvc-app-css": "*",
     "todomvc-common": "*"
   },
