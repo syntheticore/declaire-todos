@@ -21,7 +21,7 @@ app.ViewModel('TodosView', {
     e.target.value = '';
   },
 
-  markAllComplete: function(e) {
+  markAll: function(e) {
     this.get('allTodos').invoke('save', {done: e.target.checked});
   },
 
@@ -30,19 +30,18 @@ app.ViewModel('TodosView', {
   },
 
   // Computed properties
-  everythingDone: function() {
-    return this.get('activeTodos').length().then(function(length) {
-      return length == 0;
-    });
-  },
-
   todos: function() {
     var page = _.last(app.mainModel.get('_page').split('/'));
-    console.log(page);
     return {
       active: this.get('activeTodos'),
       completed: this.get('completedTodos')
     }[page] || this.get('allTodos');
+  },
+
+  everythingDone: function() {
+    return this.get('activeTodos').length().then(function(length) {
+      return length == 0;
+    });
   },
 
   // Helpers

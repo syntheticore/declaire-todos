@@ -1,13 +1,13 @@
 {
   "name": "declaire-todos",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "A simple todos application using Declaire.js",
   "author": {
     "name": "Björn Breitgoff",
     "email": "syntheticore@gmail.com"
   },
   "dependencies": {
-    "declaire": "^0.2.4",
+    "declaire": "^0.2.5",
     "todomvc-app-css": "*",
     "todomvc-common": "*"
   },
