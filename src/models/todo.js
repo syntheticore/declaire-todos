@@ -6,16 +6,16 @@ module.exports = declaire.Model('todos', {
   done: false,
 
   // Methods
-  rename: function(e) {
-    e.preventDefault();
-    this.set('renaming', true, {local: true});
-  }
+  // rename: function(e) {
+  //   e.preventDefault();
+  //   this.set('renaming', true, {local: true});
+  // }
 
 // Constructor
 }, function() {
-  this.set('renaming', false, {local: true});
+  // this.set('renaming', false, {local: true});
 
-  this.on('save revert', function() {
-    this.set('renaming', false, {local: true});
-  });
+  // this.on('save revert', function() {
+  //   this.set('renaming', false, {local: true});
+  // });
 });

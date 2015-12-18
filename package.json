@@ -7,7 +7,7 @@
     "email": "syntheticore@gmail.com"
   },
   "dependencies": {
-    "declaire": "^0.2.5",
+    "declaire": "^0.2.14",
     "todomvc-app-css": "*",
     "todomvc-common": "*"
   },
@@ -19,8 +19,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": "make test",
-    "postinstall": "npm ddp"
+    "test": "make test"
   },
   "repository": {
     "type": "git",

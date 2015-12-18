@@ -1,14 +1,17 @@
-var Declaire = require('declaire');
-var _ = Declaire.Utils;
+var declaire = require('declaire');
+var _ = declaire.utils;
 
-
-var app = Declaire.Application({
+// Configure application
+var app = declaire.Application({
   mongoDevUrl: 'mongodb://127.0.0.1:27017/todos',
   npmPublic: ['todomvc-app-css', 'todomvc-common']
 });
 
+// Load and register external data and view models
 var Todo = app.use(require('./src/models/todo.js'));
+app.use(require('./src/views/TodoView.js'));
 
+// Declare main view model directly on the app
 app.ViewModel('TodosView', {
   // Queries
   allTodos: Todo.all(),
@@ -17,7 +20,11 @@ app.ViewModel('TodosView', {
 
   // Actions
   newTodo: function(e) {
-    Todo.create({title: _.capitalize(e.target.value.trim())}).save();
+    console.log(e);
+    var title = _.capitalize(e.target.value.trim());
+    console.log(title);
+    title && Todo.create({title: title}).save();
+    console.log("created");
     e.target.value = '';
   },
 
@@ -32,6 +39,7 @@ app.ViewModel('TodosView', {
   // Computed properties
   todos: function() {
     var page = _.last(app.mainModel.get('_page').split('/'));
+    console.log(page);
     return {
       active: this.get('activeTodos'),
       completed: this.get('completedTodos')
@@ -39,17 +47,17 @@ app.ViewModel('TodosView', {
   },
 
   everythingDone: function() {
-    return this.get('activeTodos').length().then(function(length) {
-      return length == 0;
+    return this.get('activeTodos').size().then(function(size) {
+      return size == 0;
     });
   },
 
-  // Helpers
   pluralize: function(word, n) {
     return word + (n == 1 ? '' : 's');
   }
 });
 
+// Run the application
 app.init(function(start) {
-  start();
+  start(); 
 });
