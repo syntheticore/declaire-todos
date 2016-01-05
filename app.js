@@ -11,9 +11,11 @@ var app = declaire.Application({
 var Todo = app.use(require('./src/models/todo.js'));
 app.use(require('./src/views/TodoView.js'));
 
-// Declare main view model directly on the app
+// Declare view model
 app.ViewModel('TodosView', {
-  // Queries
+  // Properties
+  filter: 'all',
+
   allTodos: Todo.all(),
   activeTodos: Todo.filter({done: false}),
   completedTodos: Todo.filter({done: true}),
@@ -38,12 +40,11 @@ app.ViewModel('TodosView', {
 
   // Computed properties
   todos: function() {
-    var page = _.last(app.mainModel.get('_page').split('/'));
-    console.log(page);
+    // var page = _.last(app.mainModel.get('_page').split('/'));
     return {
       active: this.get('activeTodos'),
       completed: this.get('completedTodos')
-    }[page] || this.get('allTodos');
+    }[this.get('filter')] || this.get('allTodos');
   },
 
   everythingDone: function() {
@@ -52,9 +53,13 @@ app.ViewModel('TodosView', {
     });
   },
 
+  // Helpers
   pluralize: function(word, n) {
     return word + (n == 1 ? '' : 's');
   }
+}, function(filter) {
+  // Constructor
+  this.set('filter', filter);
 });
 
 // Run the application
