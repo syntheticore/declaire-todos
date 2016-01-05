@@ -11,15 +11,8 @@
     "todomvc-app-css": "*",
     "todomvc-common": "*"
   },
-  "devDependencies": {
-    "mocha": "*",
-    "chai": "*",
-    "istanbul": "*",
-    "coveralls": "*"
-  },
   "scripts": {
-    "start": "node app.js",
-    "test": "make test"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
