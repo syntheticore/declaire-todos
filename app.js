@@ -40,7 +40,6 @@ app.ViewModel('TodosView', {
 
   // Computed properties
   todos: function() {
-    // var page = _.last(app.mainModel.get('_page').split('/'));
     return {
       active: this.get('activeTodos'),
       completed: this.get('completedTodos')
