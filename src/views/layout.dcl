@@ -40,7 +40,7 @@ body
               span {pluralize('item', activeTodos.size)} left
             
             ul.filters
-              li > a(href="/pages/all"       class="{selected: false}"      ) All
+              li > a(href="/pages/all"       class="{selected: _page == '/pages/all'}"      ) All
               li > a(href="/pages/active"    class="{selected: _page == '/pages/active'}"   ) Active
               li > a(href="/pages/completed" class="{selected: _page == '/pages/completed'}") Completed
 
