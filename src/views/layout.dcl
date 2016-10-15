@@ -40,13 +40,9 @@ body
               span {pluralize('item', activeTodos.size)} left
             
             ul.filters
-              li > a(href="/pages/all"       class="{selected: _page == '/pages/all'}"      ) All
-              li > a(href="/pages/active"    class="{selected: _page == '/pages/active'}"   ) Active
-              li > a(href="/pages/completed" class="{selected: _page == '/pages/completed'}") Completed
-
-              //- li > a(href="/pages/all"       class="{selected: _page == $href}") All
-              //- li > a(href="/pages/active"    class="{selected: _page == $href}") Active
-              //- li > a(href="/pages/completed" class="{selected: _page == $href}") Completed
+              li > a(href="/pages/all"       class="{selected: _page == $href}") All
+              li > a(href="/pages/active"    class="{selected: _page == $href}") Active
+              li > a(href="/pages/completed" class="{selected: _page == $href}") Completed
 
             {{if completedTodos.size}}
               button.clear-completed({{on click clearCompleted}}) Clear completed

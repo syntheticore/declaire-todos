@@ -26,7 +26,6 @@ app.ViewModel('TodosView', {
     var title = _.capitalize(e.target.value.trim());
     console.log(title);
     title && Todo.create({title: title}).save();
-    console.log("created");
     e.target.value = '';
   },
 
