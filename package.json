@@ -9,7 +9,7 @@
   "dependencies": {
     "chai": "^3.5.0",
     "coveralls": "^2.11.12",
-    "declaire": "^0.3.10",
+    "declaire": "^0.3.12",
     "istanbul": "^0.4.5",
     "mocha": "^3.0.2",
     "todomvc-app-css": "^2.0.6",
